@@ -5,7 +5,7 @@ import { parseError } from '@/utils'
 
 export const useLoginUserAPI = () => {
   return useMutation({
-    mutationFn: (data: LoginSchemaType): Promise<any> => axios.post('/api/user/login', data),
+    mutationFn: (data: LoginSchemaType) => axios.post('/api/user/login', data),
     onError: (e: AxiosError) => {
       e.message = parseError(e)
     },

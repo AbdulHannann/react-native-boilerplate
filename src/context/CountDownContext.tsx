@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 const CountDownTime = 10
 
@@ -7,29 +7,34 @@ export const CountDownContext = React.createContext({
   reset: () => {},
   stop: () => {},
 })
-const CountDownProvider = ({ children }: any) => {
+const CountDownProvider = ({ children }: { children: React.ReactNode }) => {
   const [count, setCount] = useState(CountDownTime)
-  const [interval, setIntervalRun] = useState<any>()
-  const counter = (run: boolean) => {
-    if (run) {
-      setCount(CountDownTime)
-      let countValue = CountDownTime
-      setIntervalRun(
-        setInterval(() => {
-          countValue = countValue - 1
-          setCount(countValue)
-        }, 1000)
-      )
-    } else {
-      interval ? clearInterval(interval) : null
-    }
-  }
+  const [interval, setIntervalRun] = useState<NodeJS.Timeout>()
+
+  const counter = useCallback(
+    (run: boolean) => {
+      if (run) {
+        setCount(CountDownTime)
+        let countValue = CountDownTime
+        setIntervalRun(
+          setInterval(() => {
+            countValue = countValue - 1
+            setCount(countValue)
+          }, 1000)
+        )
+      } else {
+        interval ? clearInterval(interval) : null
+      }
+    },
+    [interval]
+  )
+
   useEffect(() => {
     if (count <= 0) {
       clearInterval(interval)
       counter(true)
     }
-  }, [count])
+  }, [count, counter, interval])
 
   const resetCounter = () => {
     counter(true)

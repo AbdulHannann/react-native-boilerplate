@@ -11,7 +11,8 @@ const RootStack = createStackNavigator<RootStackParamList>()
 
 const Navigation = () => {
   // Removing Navigation Ref on unmount
-  useEffect((): any => {
+  // @ts-ignore
+  useEffect(() => {
     return () => (isReadyRef.current = false)
   }, [])
 

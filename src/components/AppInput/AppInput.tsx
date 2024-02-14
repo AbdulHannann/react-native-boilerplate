@@ -8,7 +8,7 @@ import { AppText } from '../AppText'
 
 interface IProps {
   name: string
-  control: Control<any>
+  control: Control
   placeholder: string
   error?: string
   keyBoardType: KeyboardType

@@ -40,7 +40,6 @@ export function useJwtToken(): {
   )
 
   useEffect(() => {
-    // eslint-disable-next-line
     ;(async () => {
       if (state.token) {
         setLoading(true)

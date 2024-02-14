@@ -8,12 +8,10 @@ import { useTranslation } from 'react-i18next'
 // import { LoginSchemaType } from '@/config/schema'
 // import { useLoginUserAPI } from '@/services'
 import { LoginProps } from './types'
-import { useNavigation } from '@react-navigation/native'
 import { gotoDrawerFromAuth } from '@/navigation'
 
-export const Login: React.FC<LoginProps> = () => {
+export const Login: React.FC<LoginProps> = ({ navigation }) => {
   const { t } = useTranslation()
-  const navigation = useNavigation()
   // const [loading, setLoading] = useState<boolean>(false)
   // const { mutateAsync: loginUser, error, isError, isPending } = useLoginUserAPI()
   // const {

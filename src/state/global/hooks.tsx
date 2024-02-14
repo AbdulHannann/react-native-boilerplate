@@ -12,7 +12,7 @@ export function useThemeManager() {
   const toggleTheme = useCallback(() => {
     toggleThemeForContext()
     dispatch(toggleThemeAction())
-  }, [dispatch])
+  }, [dispatch, toggleThemeForContext])
 
   return { isDark, toggleTheme }
 }
