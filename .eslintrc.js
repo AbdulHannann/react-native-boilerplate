@@ -15,6 +15,7 @@ module.exports = {
         '@typescript-eslint/no-shadow': ['error'],
         'no-shadow': 'off',
         'no-undef': 'off',
+        'no-debugger': 'error',
         'semi': 0,
         '@typescript-eslint/no-unused-vars': 'warn',
         '@typescript-eslint/ban-types': 'warn',

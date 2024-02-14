@@ -9,7 +9,7 @@ export const Home: React.FC<HomeProps> = () => {
 
   return (
     <View>
-      <AppHeader title={t('Home')} />
+      <AppHeader title={t('Home')} hideBackButton />
     </View>
   )
 }
